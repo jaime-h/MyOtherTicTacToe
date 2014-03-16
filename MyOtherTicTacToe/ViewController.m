@@ -34,6 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.whosTurn = ME;
 }
 
@@ -84,5 +85,40 @@
         self.whichPlayerLabel.text = @"O";
         self.whosTurn = ME;
     }
+    
+    [self whoWon];
+//    [self whoWon:self.whichPlayerLabel.text];
+}
+
+- (NSString *)whoWon
+{
+    NSLog(@"%@, %@, %@", self.myLabelOne.text,   self.myLabelTwo.text,   self.myLabelThree.text);
+    NSLog(@"%@, %@, %@", self.myLabelFour.text,  self.myLabelFive.text,  self.myLabelSix.text);
+    NSLog(@"%@, %@, %@", self.myLabelSeven.text, self.myLabelEight.text, self.myLabelNine.text);
+    
+    // Need to add the column winning combinations....
+    // Also need to determine how to pass the player back, end game and call it a day..
+    
+    
+    if (([self.myLabelOne.text  isEqualToString:@"X"] && [self.myLabelTwo.text  isEqualToString:@"X"] && [self.myLabelThree.text isEqualToString:@"X"]) ||
+        ([self.myLabelFour.text  isEqualToString:@"X"] &&  [self.myLabelFive.text isEqualToString:@"X"] && [self.myLabelSix.text   isEqualToString:@"X"]) ||
+        ([self.myLabelSeven.text isEqualToString:@"X" ] && [self.myLabelEight.text isEqualToString:@"X"] && [self.myLabelNine.text isEqualToString:@"X"]) ||
+        ([self.myLabelOne.text    isEqualToString:@"X"] && [self.myLabelFive.text isEqualToString:@"X"] && [self.myLabelNine.text isEqualToString:@"X"]) || ([self.myLabelThree.text isEqualToString:@"X"] && [self.myLabelFive.text isEqualToString:@"X"] && [self.myLabelSeven.text isEqualToString:@"X"]))
+    {
+        return @"X";
+    }
+    
+    else if (([self.myLabelOne.text  isEqualToString:@"Y"] && [self.myLabelTwo.text  isEqualToString:@"Y"] && [self.myLabelThree.text isEqualToString:@"Y"]) ||
+        ([self.myLabelFour.text  isEqualToString:@"Y"] &&  [self.myLabelFive.text isEqualToString:@"Y"] && [self.myLabelSix.text   isEqualToString:@"Y"]) ||
+        ([self.myLabelSeven.text isEqualToString:@"Y" ] && [self.myLabelEight.text isEqualToString:@"Y"] && [self.myLabelNine.text isEqualToString:@"Y"]) ||
+        ([self.myLabelOne.text    isEqualToString:@"Y"] && [self.myLabelFive.text isEqualToString:@"Y"] && [self.myLabelNine.text isEqualToString:@"Y"]) || ([self.myLabelThree.text isEqualToString:@"Y"] && [self.myLabelFive.text isEqualToString:@"Y"] && [self.myLabelSeven.text isEqualToString:@"Y"]))
+    {
+        return @"Y";
+    }
+    else
+    {
+        return nil;
+    }
+    
 }
 @end
